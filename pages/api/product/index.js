@@ -8,6 +8,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const products = await Product.find({});
+                res.setHeader('Cache-Control', 's-maxage=86400')
                 res.status(200).json({
                     success: true,
                     data: products
