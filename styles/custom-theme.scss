@@ -1,0 +1,116 @@
+@import './myvariables';
+@import '../scss/bootstrap.scss';
+
+$enable-shadows: true;
+$primary: rgb(30, 30, 32);
+
+
+$body-color:  #333;
+$body-bg: #f2f2f2;
+
+.navbar{
+    font-family: $font-family-inter;
+    font-weight: 600;
+}
+
+body{
+    font-family: $font-family-inter;
+}
+
+.devide-title{
+    font-family: $font-family-inter;
+    font-weight: 600;
+}
+.devide-subtitle{
+    font-family: $font-family-inter;
+    font-weight: 200;
+}
+
+.card-custom{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px;
+      &:after{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+        top: 0;
+        left: 0;
+        z-index: 2;
+        transition: 0.5s ease-in-out;
+    }
+    &:hover::after{
+        background-color: rgba($color: #ffffff, $alpha: 0.4);
+    }
+    
+}
+
+.card-category{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    top: 15%;
+    left: 0;
+    color: $body-bg;
+    font-family: $font-family-inter;
+    font-weight: 600;
+}
+
+.card-category h1{
+    color: rgb(65, 65, 65);
+    background-color: rgba($color: #e9e9e9, $alpha: 0.7);
+    font-family: $font-family-inter;
+    font-weight: 600;
+    width:fit-content;
+    padding: 1rem;
+}
+
+.card-category p{
+    color: rgb(31, 30, 30);
+    background-color: rgba($color: #e9e9e9, $alpha: 0.7);
+    font-family: $font-family-inter;
+    font-weight: 200;
+    width:fit-content;
+    padding: 0.3rem;
+}
+
+.imagecover{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.no-border{
+    border: none ;
+}
+
+.btn-primary, .btn-outline-primary{
+    border-radius: 0rem;
+    
+}
+
+.card.hover-card .card-body button{
+    margin-left: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;    
+}
+.card.hover-card:hover .card-body button{
+    visibility: visible;
+    opacity: 1;
+    margin-left: 0px;
+}
+
+.breadcrumb-custom{
+    font-family: $font-family-inter;
+    font-weight: 200;
+}
+
+.breadcrumb-custom a{
+    color: $primary;
+}
