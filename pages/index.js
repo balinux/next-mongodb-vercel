@@ -149,4 +149,16 @@ const Home = () => (
   </>
 )
 
+export async function getServerSideProps() {
+  //get local env
+  console.log(process.env.url);
+
+  // Fetch data from external API
+  const res = await fetch(`${process.env.url}/api/product`)
+  const data = await res.json()
+  console.log(data);
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
 export default Home
