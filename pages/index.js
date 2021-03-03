@@ -76,66 +76,28 @@ const Home = () => (
         </Col>
       </Row>
       <Row className="justify-content-md-start">
+        {data.data.map((product) => (
         <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
           <Link href="/product/detail">
-            <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
+              <Card.Img variant="top" src={product.attacments[0]} />
           </Link>
           <Card.Body className="pl-0">
             <Row className="d-flex justify-content-between">
-              <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">Card Title</Card.Title>
-              <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title>
+                <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">{product.title}</Card.Title>
+                {/* <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title> */}
+                <Card.Title style={{ fontSize: '0.9rem' }} className="ml-3">
+                  <MoneyFormat value={product.price} />
+                </Card.Title>
             </Row>
             <Card.Text className="font-weight-light">
-              Hijab
+                {product.category_id.name}
             </Card.Text>
             <Link href="/product/detail">
               <Button variant="outline-primary" >Belanja</Button>
             </Link>
           </Card.Body>
         </Card>
-
-        <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-          <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
-          <Card.Body className="pl-0">
-            <Row className="d-flex justify-content-between">
-              <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">Card Title</Card.Title>
-              <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title>
-            </Row>
-            <Card.Text className="font-weight-light">
-              Hijab
-            </Card.Text>
-            <Button variant="outline-primary" >Belanja</Button>
-          </Card.Body>
-        </Card>
-
-        <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-          <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
-          <Card.Body className="pl-0">
-            <Row className="d-flex justify-content-between">
-              <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">Card Title</Card.Title>
-              <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title>
-            </Row>
-            <Card.Text className="font-weight-light">
-              Hijab
-            </Card.Text>
-            <Button variant="outline-primary" >Belanja</Button>
-          </Card.Body>
-        </Card>
-
-        <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-          <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
-          <Card.Body className="pl-0">
-            <Row className="d-flex justify-content-between">
-              <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">Card Title</Card.Title>
-              <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title>
-            </Row>
-            <Card.Text className="font-weight-light">
-              Hijab
-            </Card.Text>
-            <Button variant="outline-primary" >Belanja</Button>
-          </Card.Body>
-        </Card>
-
+        ))}
       </Row>
     </Container>
     {/* terlaris section */}
