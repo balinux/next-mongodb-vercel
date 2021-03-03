@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card } from 'react-bootstrap'
 import NavCustom from '../components/NavCustom'
 import CarouselCustom from '../components/CarouselCustom';
+import MoneyFormat from '../components/MoneyFormat';
 
 
 const Home = () => (
