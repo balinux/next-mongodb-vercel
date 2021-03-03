@@ -112,35 +112,35 @@ const Home = () => (
 
         <Col className="col-12 col-md">
           <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-            <li><a class="text-muted" href="#">Random feature</a></li>
-            <li><a class="text-muted" href="#">Team feature</a></li>
-            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
+          <ul className="list-unstyled text-small">
+            <li><a className="text-muted" href="#">Cool stuff</a></li>
+            <li><a className="text-muted" href="#">Random feature</a></li>
+            <li><a className="text-muted" href="#">Team feature</a></li>
+            <li><a className="text-muted" href="#">Stuff for developers</a></li>
+            <li><a className="text-muted" href="#">Another one</a></li>
+            <li><a className="text-muted" href="#">Last time</a></li>
           </ul>
         </Col>
         <Col className="col-12 col-md">
           <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-            <li><a class="text-muted" href="#">Random feature</a></li>
-            <li><a class="text-muted" href="#">Team feature</a></li>
-            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
+          <ul className="list-unstyled text-small">
+            <li><a className="text-muted" href="#">Cool stuff</a></li>
+            <li><a className="text-muted" href="#">Random feature</a></li>
+            <li><a className="text-muted" href="#">Team feature</a></li>
+            <li><a className="text-muted" href="#">Stuff for developers</a></li>
+            <li><a className="text-muted" href="#">Another one</a></li>
+            <li><a className="text-muted" href="#">Last time</a></li>
           </ul>
         </Col>
         <Col className="col-12 col-md">
           <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-            <li><a class="text-muted" href="#">Random feature</a></li>
-            <li><a class="text-muted" href="#">Team feature</a></li>
-            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
+          <ul className="list-unstyled text-small">
+            <li><a className="text-muted" href="#">Cool stuff</a></li>
+            <li><a className="text-muted" href="#">Random feature</a></li>
+            <li><a className="text-muted" href="#">Team feature</a></li>
+            <li><a className="text-muted" href="#">Stuff for developers</a></li>
+            <li><a className="text-muted" href="#">Another one</a></li>
+            <li><a className="text-muted" href="#">Last time</a></li>
           </ul>
         </Col>
       </Row>
