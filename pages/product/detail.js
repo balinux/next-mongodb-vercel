@@ -1,12 +1,32 @@
 import Head from 'next/head';
+import Link from 'next/link'
 
-import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card, Breadcrumb, Tabs, Tab } from 'react-bootstrap'
-import FooterWeb from '../../components/FooterWeb';
+import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card, Breadcrumb, Tabs, Tab, Modal } from 'react-bootstrap'
+import FooterWeb from '../../components/FooterWeb'
 import NavCustom from '../../components/NavCustom'
+import { useState } from 'react'
 
-
+import { useCount, useDispatchCount } from '../../components/Counter';
 
 const Detail = () => {
+
+    const count = useCount()
+    const dispatch = useDispatchCount()
+
+    // modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const storeProduct = (event) => {
+        dispatch({
+            type: 'STORE_PRODUCT',
+            product: { id: 123213, prdocut_name: "12321" }
+        })
+        handleShow()
+    }
+
+
     return (
         <div>
             <Head>
@@ -68,11 +88,17 @@ const Detail = () => {
                         <h2 className="font-weight-bold">Celana Keren</h2>
                         <p className="font-weight-bold">Rp. 200.000</p>
                         <p className="font-weight-light"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        <Button variant="outline-primary my-5 " >Belanja</Button>
+                        <Button variant="outline-primary my-5 " onClick={storeProduct} >Belanja</Button>
                         <p className="font-weight-light" style={{ fontSize: 13 }}>SKU:033</p>
                         <p className="font-weight-light" style={{ fontSize: 13 }}>Category: Clothes</p>
                         <p className="font-weight-light" style={{ fontSize: 13 }} >Tags: Clothes, Lifestyle</p>
-
+                        {/* <p className="font-weight-light" style={{ fontSize: 13 }} >Count: {count}</p> */}
+                        <p className="font-weight-light" style={{ fontSize: 13 }} >Count: {JSON.stringify(count.length)}</p>
+                        <Row>
+                            {/* <Button variant="outline-primary my-5 mr-2" onClick={handleIncrease} >add</Button>
+                            <Button variant="outline-primary my-5 " onClick={handleIncrease15}>remove</Button> */}
+                            <Button variant="outline-primary my-5 " onClick={storeProduct}>storeProduct</Button>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
@@ -91,7 +117,30 @@ const Detail = () => {
             </Container>
             {/* end tabs */}
 
-            <FooterWeb/>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Barang berhasil ditambah</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    I will not close if you click outside me. Don't even try to press
+                    escape key.
+        </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+          </Button>
+                    <Link href="/product/cart">
+                        <Button variant="primary">Check Out</Button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
+
+            <FooterWeb />
         </div>
     )
 }
