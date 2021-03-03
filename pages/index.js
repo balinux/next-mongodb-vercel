@@ -8,7 +8,7 @@ import CarouselCustom from '../components/CarouselCustom';
 import MoneyFormat from '../components/MoneyFormat';
 
 
-const Home = () => (
+const Home = ({ data }) => (
   <>
     <Head>
       <title>YTShop</title>
@@ -73,30 +73,35 @@ const Home = () => (
         <Col xs lg="5" className="align-center" align="center">
           <h1 className="devide-title">Produk Hot</h1>
           <p className="devide-subtitle mt-3"> Aneka kategori produk yang sangat sesuai dengan kebutuhan anda</p>
+          {/* <p className="devide-subtitle mt-3">{data.data.map(t => { return <p>tes</p> })}</p> */}
         </Col>
       </Row>
+
       <Row className="justify-content-md-start">
+
+        {/* <p className="devide-subtitle mt-3">{data.data.map((post) => (<li>{post.title}</li>))}</p> */}
+
         {data.data.map((product) => (
-        <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-          <Link href="/product/detail">
+          <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
+            <Link href="/product/detail">
               <Card.Img variant="top" src={product.attacments[0]} />
-          </Link>
-          <Card.Body className="pl-0">
-            <Row className="d-flex justify-content-between">
+            </Link>
+            <Card.Body className="pl-0">
+              <Row className="d-flex justify-content-between">
                 <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">{product.title}</Card.Title>
                 {/* <Card.Title style={{ fontSize: '1rem' }} className="ml-3">Rp. 12.000</Card.Title> */}
                 <Card.Title style={{ fontSize: '0.9rem' }} className="ml-3">
                   <MoneyFormat value={product.price} />
                 </Card.Title>
-            </Row>
-            <Card.Text className="font-weight-light">
+              </Row>
+              <Card.Text className="font-weight-light">
                 {product.category_id.name}
-            </Card.Text>
-            <Link href="/product/detail">
-              <Button variant="outline-primary" >Belanja</Button>
-            </Link>
-          </Card.Body>
-        </Card>
+              </Card.Text>
+              <Link href="/product/detail">
+                <Button variant="outline-primary" >Belanja</Button>
+              </Link>
+            </Card.Body>
+          </Card>
         ))}
       </Row>
     </Container>
@@ -107,7 +112,7 @@ const Home = () => (
       <Row className="mt-1 pt-5 pb-5">
         <Col className="col-12 col-md ">
           <Image src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" width="24px" height="24px" />
-          <small class="d-block mb-3 text-muted">© 2017-2018</small>
+          <small className="d-block mb-3 text-muted">© 2017-2018</small>
         </Col>
 
         <Col className="col-12 col-md">
@@ -149,6 +154,7 @@ const Home = () => (
   </>
 )
 
+// This gets called on every request
 export async function getServerSideProps() {
   //get local env
   console.log(process.env.url);
