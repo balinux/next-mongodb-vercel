@@ -1,10 +1,17 @@
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap';
+import Link from 'next/link'
+import { useCount, useDispatchCount } from '../components/Counter';
 
 const NavCustom = () => {
+    const count = useCount()
     return (
         <Navbar bg="white" className="py-4" expand="lg">
             <Container className="container-fluid">
-                <Navbar.Brand href="#home" className="mr-4">YTShop</Navbar.Brand>
+                <Navbar.Brand className="mr-4">
+                    <Link href="/">
+                        YTShop
+                    </Link>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -23,6 +30,9 @@ const NavCustom = () => {
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
+                    <Link href="/product/detail">
+                        <span className="mr-2 font-weight-light" >Cart {count.length}</span>
+                    </Link>
                     <Form inline>
                         <FormControl type="text" placeholder="Cari" className="mr-sm-2" />
                         <Button variant="outline-primary">Cari</Button>
