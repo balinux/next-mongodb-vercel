@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 
 import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card } from 'react-bootstrap'
@@ -75,7 +76,9 @@ const Home = () => (
       </Row>
       <Row className="justify-content-md-start">
         <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-          <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
+          <Link href="/product/detail">
+            <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
+          </Link>
           <Card.Body className="pl-0">
             <Row className="d-flex justify-content-between">
               <Card.Title style={{ fontWeight: 'bold', fontSize: '1rem' }} className="ml-3">Card Title</Card.Title>
@@ -84,10 +87,12 @@ const Home = () => (
             <Card.Text className="font-weight-light">
               Hijab
             </Card.Text>
-            <Button variant="outline-primary" >Belanja</Button>
+            <Link href="/product/detail">
+              <Button variant="outline-primary" >Belanja</Button>
+            </Link>
           </Card.Body>
         </Card>
-  
+
         <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
           <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
           <Card.Body className="pl-0">
@@ -101,7 +106,7 @@ const Home = () => (
             <Button variant="outline-primary" >Belanja</Button>
           </Card.Body>
         </Card>
-  
+
         <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
           <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
           <Card.Body className="pl-0">
@@ -115,7 +120,7 @@ const Home = () => (
             <Button variant="outline-primary" >Belanja</Button>
           </Card.Body>
         </Card>
-  
+
         <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
           <Card.Img variant="top" src="https://eigeradventure.com/media/wysiwyg/eiger/Homepage/Activity_MTNRNG_2.jpg" />
           <Card.Body className="pl-0">
@@ -129,7 +134,7 @@ const Home = () => (
             <Button variant="outline-primary" >Belanja</Button>
           </Card.Body>
         </Card>
-  
+
       </Row>
     </Container>
     {/* terlaris section */}
