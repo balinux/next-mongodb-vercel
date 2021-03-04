@@ -1,9 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link'
+import { useState, useEffect } from 'react';
 
 import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card, Breadcrumb, Tabs, Tab, Modal } from 'react-bootstrap'
 import FooterWeb from '../../components/FooterWeb'
 import NavCustom from '../../components/NavCustom'
+import MoneyFormat from '../../components/MoneyFormat'
+
+import { useCount, useDispatchCount } from '../../components/Counter';
+
 
 const Cart = () => {
     const count = useCount()
@@ -22,6 +27,7 @@ const Cart = () => {
         }, 0);
         setAmount(sum)
     }
+
     return (
         <div>
             <Head>
