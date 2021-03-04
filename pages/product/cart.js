@@ -6,6 +6,16 @@ import FooterWeb from '../../components/FooterWeb'
 import NavCustom from '../../components/NavCustom'
 
 const Cart = () => {
+    const count = useCount()
+    const dispatch = useDispatchCount()
+    console.log(count);
+
+    const [amount, setAmount] = useState(0)
+
+    useEffect(() => {
+        calculateAmount()
+    }, []);
+
     function calculateAmount(params) {
         var sum = count.reduce(function (a, b) {
             return a + b.product.price;
