@@ -52,7 +52,8 @@ const Cart = () => {
                         <hr />
                         <Row className="justify-content-between px-3">
                             <p className="font-weight-bold">Total Belanja:</p>
-                            <p>Rp.200.000</p>
+                            {/* <p>Rp.200.000</p> */}
+                            <p>{<MoneyFormat value={amount} />}</p>
                         </Row>
 
                         <hr />
