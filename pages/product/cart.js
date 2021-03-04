@@ -6,6 +6,12 @@ import FooterWeb from '../../components/FooterWeb'
 import NavCustom from '../../components/NavCustom'
 
 const Cart = () => {
+    function calculateAmount(params) {
+        var sum = count.reduce(function (a, b) {
+            return a + b.product.price;
+        }, 0);
+        setAmount(sum)
+    }
     return (
         <div>
             <Head>
