@@ -21,7 +21,8 @@ const Detail = (props) => {
     const storeProduct = (event) => {
         dispatch({
             type: 'STORE_PRODUCT',
-            product: { id: props._id, prdocut_name: props.title }
+            // type: 'TODO_TOGGLE',
+            product: { id: props._id, product_name: props.title, qty: 1, price: props.price }
         })
         handleShow()
     }
