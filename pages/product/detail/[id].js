@@ -22,7 +22,7 @@ const Detail = (props) => {
         dispatch({
             type: 'STORE_PRODUCT',
             // type: 'TODO_TOGGLE',
-            product: { id: props._id, product_name: props.title, qty: 1, price: props.price }
+            product: { id: props._id, product_name: props.title, qty: 1, price: props.price, attachments: props.attacments[0] }
         })
         handleShow()
     }
@@ -111,8 +111,7 @@ const Detail = (props) => {
                         <p>Lorem ipsum dolor sit amet, saepe vitae gubergren pro cu, sit eros animal invidunt ei, ex nec munere legere incorrupte. Eum an vocent commodo referrentur, no veniam maiestatis vim. Est verear nusquam delicata id, mea natum movet eripuit at. Eu quot virtute usu, nonumy eruditi suscipit duo et. Nam eu dicta tamquam apeirian, has ei verear periculis vituperatoribus. Est summo nemore ne. Nam ex posse argumentum eloquentiam, saepe similique interpretaris nec ex, ridens suscipit scriptorem ex mel.</p>
                     </Tab>
                     <Tab eventKey="profile" title="Profile">
-                        <p>Weight 	2 kg
-                        Dimensions 	20 × 10 × 5 cm</p>
+                        <p>Weight 	2 kg Dimensions 	20 × 10 × 5 cm</p>
                     </Tab>
                 </Tabs>
             </Container>
