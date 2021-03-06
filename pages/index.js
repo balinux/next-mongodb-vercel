@@ -81,8 +81,8 @@ const Home = ({ data }) => (
 
         {/* <p className="devide-subtitle mt-3">{data.data.map((post) => (<li>{post.title}</li>))}</p> */}
 
-        {data.data.map((product) => (
-          <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
+        {data.data.map((product, index) => (
+          <Card key={index} xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
             <Link href={`/product/detail/${product._id}`}>
               <Card.Img variant="top" src={product.attacments[0]} />
             </Link>
