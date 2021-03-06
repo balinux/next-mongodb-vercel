@@ -1,9 +1,33 @@
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
+
 import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button, Carousel, Image, Card, Breadcrumb, Tabs, Tab, Modal } from 'react-bootstrap'
 import FooterWeb from '../../components/FooterWeb'
 import NavCustom from '../../components/NavCustom'
+import MoneyFormat from '../../components/MoneyFormat'
 
+
+import { useCount, useDispatchCount } from '../../components/Counter';
 const Checkout = () => {
+    const count = useCount()
+    const dispatch = useDispatchCount()
+
+    const [amount, setAmount] = useState(0)
+    const [calculate, setCalculate] = useState(true)
+
+    useEffect(() => {
+        calculateAmount()
+    }, [calculate]);
+
+    function calculateAmount(params) {
+        var sum = count.reduce(function (a, b) {
+            let jumlah = a + (b.product.qty * b.product.price)
+            // console.log("amount",jumlah);
+            return jumlah;
+        }, 0);
+        setAmount(sum)
+    }
+
     return (
         <div>
             <Head>
@@ -67,15 +91,22 @@ const Checkout = () => {
                         <h5 className="font-weight-bold">Ringkasan belanja</h5>
                         <hr />
                         <p className="font-weight-bold"> Produk</p>
-                        <Row className="justify-content-between px-3">
+                        {count.map((order, idx) => (
+                            <Row className="justify-content-between px-3">
+                                <p >{order.product.product_name}</p>
+                                <p>{order.product.qty}</p>
+                                <p>{<MoneyFormat value={order.product.price * order.product.qty} />}</p>
+                            </Row>
+                        ))}
+                        {/* <Row className="justify-content-between px-3">
                             <p >Orange Airsuit</p>
                             <p>2</p>
                             <p>Rp.200.000</p>
-                        </Row>
+                        </Row> */}
                         <hr />
                         <Row className="justify-content-between px-3">
                             <p className="font-weight-bold">Total Belanja:</p>
-                            <p>Rp.200.000</p>
+                            <p>{<MoneyFormat value={amount} />}</p>
                         </Row>
                     </Col>
                 </Row>
