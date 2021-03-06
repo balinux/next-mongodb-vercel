@@ -30,7 +30,7 @@ const NavCustom = () => {
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Link href="/product/detail">
+                    <Link href="/product/cart">
                         <span className="mr-2 font-weight-light" >Cart {count.length}</span>
                     </Link>
                     <Form inline>
