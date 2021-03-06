@@ -28,6 +28,31 @@ const Cart = () => {
         setAmount(sum)
     }
 
+    function removeProduct(product_id, idx) {
+        console.log("idx", idx);
+        setCalculate(false)
+        dispatch({
+            type: 'DELETE_PRODUCT',
+            product: { id: product_id, idx: idx }
+        })
+    }
+
+    function updateProduct(product_id, idx) {
+        setCalculate(!calculate)
+        dispatch({
+            type: 'UPDATE_PRODUCT',
+            product: { id: product_id, idx: idx }
+        })
+    }
+
+    function updateProductDecrement(product_id, idx) {
+        setCalculate(!calculate)
+        dispatch({
+            type: 'UPDATE_PRODUCT_DECREMENT',
+            product: { id: product_id, idx: idx }
+        })
+    }
+
     return (
         <div>
             <Head>
