@@ -18,13 +18,65 @@ const Detail = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const storeProduct = (event) => {
-        dispatch({
-            type: 'STORE_PRODUCT',
-            // type: 'TODO_TOGGLE',
-            product: { id: props._id, product_name: props.title, qty: 1, price: props.price, attachments: props.attacments[0] }
-        })
-        handleShow()
+    const storeProduct = (id_product) => {
+
+        // check if data is not 0
+        if (count.length == 0) {
+            dispatch({
+                type: 'STORE_PRODUCT',
+                // type: 'TODO_TOGGLE',
+                product: { id: id_product, product_name: props.title, qty: 1, price: props.price, attachments: props.attacments[0] }
+            })
+            handleShow()
+        } else {
+
+            if (count.some((data) => data.product.id === id_product)) {
+                console.log("Object found inside the array.");
+                // console.log("udpate data");
+                dispatch({
+                    type: 'UPDATE_PRODUCT',
+                    product: { id: id_product }
+                })
+            } else {
+                console.log("Object not found.");
+                // console.log("data: ", data);
+                console.log("add data");
+                // console.log("data.product.id: ", data.product.id);
+                // console.log("id_product: ", id_product);
+                dispatch({
+                    type: 'STORE_PRODUCT',
+                    product: { id: id_product, product_name: props.title, qty: 1, price: props.price, attachments: props.attacments[0] }
+                })
+                handleShow()
+
+            }
+
+            // count.map((data) => {
+            //     if (data.product.id == id_product) {
+            //         console.log("udpate data");
+            //         console.log("data.product.id: ", data.product.id);
+            //         console.log("id_product: ", id_product);
+            //         dispatch({
+            //             type: 'UPDATE_PRODUCT',
+            //             product: { id: id_product}
+            //         })
+            //     } else if (data.product.id != id_product){
+            //         console.log("add data");
+            //         console.log("data.product.id: ", data.product.id);
+            //         console.log("id_product: ", id_product);
+            //         dispatch({
+            //             type: 'STORE_PRODUCT',
+            //             // type: 'TODO_TOGGLE',
+            //             product: { id: id_product, product_name: props.title, qty: 1, price: props.price, attachments: props.attacments[0] }
+            //         })
+            //         handleShow()
+            //     }
+            //     else{
+            //         console.log("gak jelas");
+            //     }
+            // })
+        }
+
     }
 
 
@@ -89,12 +141,12 @@ const Detail = (props) => {
                         <h2 className="font-weight-bold">{props.title}</h2>
                         <p className="font-weight-bold"><MoneyFormat value={props.price} /></p>
                         <p className="font-weight-light"> {props.description}</p>
-                        <Button variant="outline-primary my-5 " onClick={storeProduct} >Belanja</Button>
+                        <Button variant="outline-primary my-5 " onClick={() => storeProduct(props._id)} >Belanja</Button>
                         {/* <p className="font-weight-light" style={{ fontSize: 13 }}>SKU:033</p> */}
                         <p className="font-weight-light" style={{ fontSize: 13 }}>Ketegori: {props.category_id.name}</p>
                         {/* <p className="font-weight-light" style={{ fontSize: 13 }} >Tags: Clothes, Lifestyle</p> */}
                         {/* <p className="font-weight-light" style={{ fontSize: 13 }} >Count: {count}</p> */}
-                        <p className="font-weight-light" style={{ fontSize: 13 }} >Count: {JSON.stringify(count)}</p>
+                        {/* <p className="font-weight-light" style={{ fontSize: 13 }} >Count: {JSON.stringify(count)}</p> */}
                         <Row>
                             {/* <Button variant="outline-primary my-5 mr-2" onClick={handleIncrease} >add</Button>
                             <Button variant="outline-primary my-5 " onClick={handleIncrease15}>remove</Button> */}
