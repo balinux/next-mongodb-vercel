@@ -13,17 +13,19 @@ import { useCount, useDispatchCount } from '../../components/Counter';
 const Cart = () => {
     const count = useCount()
     const dispatch = useDispatchCount()
-    console.log(count);
 
     const [amount, setAmount] = useState(0)
+    const [calculate, setCalculate] = useState(true)
 
     useEffect(() => {
         calculateAmount()
-    }, []);
+    }, [calculate]);
 
     function calculateAmount(params) {
         var sum = count.reduce(function (a, b) {
-            return a + b.product.price;
+            let jumlah = a + (b.product.qty * b.product.price)
+            // console.log("amount",jumlah);
+            return jumlah;
         }, 0);
         setAmount(sum)
     }
@@ -77,24 +79,48 @@ const Cart = () => {
             {/* cart main */}
             <Container className="mt-5 mb-3">
                 <Row className="justify-content-md-start">
-                    <Col className="product-detail col-12 col-md-9">
-                        <Row >
-                            <Col className="col-md-2">
-                                <Image src="https://onea.qodeinteractive.com/wp-content/uploads/2018/08/h-1-list-product-2-600x800.jpg" rounded fluid />
-                            </Col>
-                            <Col className="col-md-4">
-                                <h4>Orange Airsuit</h4>
-                                <p>$225.00</p>
-                            </Col>
-                            <Col className="col-md-4">
-                                <p>Quantity: 2</p>
-                            </Col>
-                            <Col className="col-md-2">
-                                <h4>X</h4>
-                            </Col>
-                        </Row>
+                    <Col className="product-detail col-12 col-md-8">
+                        {count.map((order, idx) => (
+                            <Row className="mb-5" key={idx}>
+                                <Col className="col-md-2 col-2">
+                                    <Image src={order.product.attachments} rounded fluid />
+                                </Col>
+                                <Col className="col-md-4 col-5">
+                                    <h5>{order.product.product_name} </h5>
+                                    <p className="font-weight-light">{<MoneyFormat value={order.product.price} />}</p>
+                                </Col>
+                                <Col className="col-md-4 col-3 justify-content-center align-item-center">
+                                    <Row>
+                                        {order.product.qty <= 0 ? '' : <Col md={3} sm={6} xs={4} className="justify-content-center">
+                                            <Button onClick={() => updateProductDecrement(order.product.id, idx)} variant="warning" block>-</Button>
+                                        </Col>}
+
+                                        <Col md={1} sm={6} xs={4}>
+                                            <p>{order.product.qty}</p>
+                                        </Col>
+
+                                        <Col md={3} sm={6} xs={4} className="justify-content-center">
+                                            <Button onClick={() => updateProduct(order.product.id, idx)} variant="warning" block>+</Button>
+                                        </Col>
+                                    </Row>
+                                </Col>
+
+                                <Col md={2} sm={12}>
+                                    <Button onClick={() => removeProduct(order.product.id, idx)} variant="warning" block>
+                                        Hapus
+                                    </Button>
+                                </Col>
+                                {/* <Col className="col-md-2 col-2">
+                                    <Button onClick={() => updateProduct(order.product.id, idx)} variant="warning" block>u</Button>
+                                </Col> */}
+                            </Row>
+                        ))}
+                        {/* <Button onClick={() => removeProduct("tes")} variant="warning" block>x</Button> */}
+
                     </Col>
-                    <Col className="product-detail col-12 col-md-3 bg-grey bg-light pt-3 h-100">
+
+                    {/* amount */}
+                    < Col className="product-detail col-12 col-md-4 bg-grey bg-light pt-3 h-100" >
                         <h5 className="font-weight-bold">Ringkasan belanja</h5>
                         <hr />
                         <Row className="justify-content-between px-3">
