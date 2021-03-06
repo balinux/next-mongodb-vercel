@@ -81,9 +81,9 @@ const Home = ({ data }) => (
 
         {/* <p className="devide-subtitle mt-3">{data.data.map((post) => (<li>{post.title}</li>))}</p> */}
 
-        {data.data.map((product) => (
-          <Card xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
-            <Link href="/product/detail">
+        {data.data.map((product, index) => (
+          <Card key={index} xs="12" lg="3" className="no-border col-12 col-md-3 hover-card">
+            <Link href={`/product/detail/${product._id}`}>
               <Card.Img variant="top" src={product.attacments[0]} />
             </Link>
             <Card.Body className="pl-0">
@@ -97,7 +97,8 @@ const Home = ({ data }) => (
               <Card.Text className="font-weight-light">
                 {product.category_id.name}
               </Card.Text>
-              <Link href="/product/detail">
+              {/* <Link href="/product/detail/603f1a3e16837f07f4ee248e"> */}
+              <Link href={`/product/detail/${product._id}`}>
                 <Button variant="outline-primary" >Belanja</Button>
               </Link>
             </Card.Body>
